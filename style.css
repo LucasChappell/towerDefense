@@ -1,3 +1,7 @@
+html{
+    width: 100%;
+    overflow: hidden;
+}
 #startPageBackground{
  position: absolute;
  left: 0px;
@@ -32,7 +36,7 @@
 
 #actualBackground{
     background-color: green;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     left: 0%;
@@ -41,10 +45,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden
+    ;
 }
 #gameArea{
-    height: 80vh;
-    width: 99vw;
+    position: fixed;
+    top: 1%;
+    width: 1000px;
+    height: 1000px;
+    display: grid;
+    grid-template-columns: var(--cols) ;
+    overflow: hidden;
     
 }
 .badGuy{
@@ -55,4 +66,22 @@
     z-index: 3;
     position: absolute;
     left: 101vw;
+}
+
+.box {
+    height: var(--row-height);
+    
+    /* width: 100%; */
+    border-width: 1px;
+    margin: 0px;
+    border: 1px black solid;
+    border-color: rgba(0, 0, 0, .15);
+
+}
+.box:hover{
+    background-color: rgba(0, 0, 0, .15);
+}
+:root{
+    --row-height: 6.25%;
+    --cols: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto; 
 }

@@ -1,7 +1,11 @@
 let startPageBackground = document.getElementById('startPageBackground');
 let startButton = document.getElementById('startButton');
-let gameArea = document.getElementById('gameArea');
+const gameArea = document.querySelector('#gameArea');
+let root = document.documentElement;
 let enemyCount = 50;
+let mousecolor = "#";
+let points = document.getElementById('points');
+
 window.onload = function(){
     onStart();
 }
@@ -13,9 +17,11 @@ startButton.addEventListener('click', startGame);
 
 function startGame(){
     startPageBackground.style.opacity = 0;
+    startPageBackground.style.left = '105vw';
     startButton.removeEventListener('click', startGame);
     createEnemies()
     randY()
+    createBox(25)
     
 
 }
@@ -41,12 +47,44 @@ function createEnemies(yPos){
         
         const badGuy = document.createElement('div') 
         badGuy.style.top = yPos;
-        badGuy.id = "badGuy" + i;
+        badGuy['name'] = 'name' + i
         badGuy.classList.add('badGuy');
         gameArea.appendChild(badGuy);
+        console.log(badGuy.name);
         
     }
 }
+function fire(){
+
+}
+function placeTurret(){
+
+}
+function sellTurret(){
+
+}
 function moveEnemies(){
 
+}
+function enemyAttack(){
+
+}
+
+
+function createBox(dimension){
+    root.style.setProperty('--row-height',(95/dimension) + "%");
+    let autos = "";
+    for (k = 0; k < dimension; k++){
+        autos += " auto";
+    }
+    root.style.setProperty('--cols',autos);
+    for (j = 0; j < dimension; j++){
+        const row = document.createElement("div");
+        for (i = 0; i < dimension; i++){
+            const box = document.createElement('div');
+            box.classList.add('box');
+            row.appendChild(box);
+        }
+        gameArea.appendChild(row);
+    } 
 }
